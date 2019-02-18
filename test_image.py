@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 voxels = ps.generators.blobs(shape=[10, 10, 10], porosity=0.3, blobiness=2)
 
-ps.io.to_vtk(voxels, path='voxels', vox=True)
+ps.io.to_vtk(voxels, path='voxels', vox=False)
 
 fig = plt.figure()
 
