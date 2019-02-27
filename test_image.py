@@ -1,34 +1,58 @@
 import numpy as np
 from stl import mesh
 import porespy as ps
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 
-voxels = ps.generators.blobs(shape=[10, 10, 10], porosity=0.3, blobiness=2)
 
-voxels = np.array(voxels, dtype=mesh.Mesh.dtype)
+def generate_voxels(shape, porosity, save_to_vtk=False, filename='voxels'):
 
-print(np.empty([10, 10, 10])[0][0])
-print(voxels.shape)
-# print(voxels)
+    voxels = ps.generators.blobs(shape, porosity, blobiness=2)
 
-# for voxels_slice in voxels:
-#     print(voxels_slice.shape)
-#     for vx in voxels_slice:
-#         print(vx.shape)
+    if save_to_vtk:
+        ps.io.to_vtk(voxels, path=filename, vox=False)
 
-print(voxels[0][0])
+    return voxels
 
-# voxels_mesh = mesh.Mesh(voxels, remove_empty_areas=False)
 
-# print(voxels_mesh)
+def generate_voxels_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
 
-# voxels_mesh.save('stl_file.stl')
+    voxels_np = np.array(voxels, dtype=mesh.Mesh.dtype)
+    voxels_mesh = mesh.Mesh(voxels_np, remove_empty_areas=False)
 
-# ps.io.to_vtk(voxels, path='voxels', vox=False)
-#
-# fig = plt.figure()
-#
-# ax = fig.gca(projection='3d')
-# ax.voxels(voxels, edgecolor='k')
-#
-# plt.show()
+    if save_to_stl:
+        voxels_mesh.save(filename)
+
+    return voxels_mesh
+
+
+def show_generated_voxels(voxels):
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    ax.voxels(voxels, edgecolor='k')
+
+    plt.show()
+
+
+def show_stl_mesh(voxels_mesh):
+
+    fig = plt.figure()
+    axes = mplot3d.Axes3D(fig)
+
+    axes.add_collection3d(mplot3d.art3d.Poly3DCollection(voxels_mesh.vectors))
+
+    scale = voxels_mesh.points.flatten(-1)
+    axes.auto_scale_xyz(scale, scale, scale)
+
+    plt.show()
+
+
+porous_obj = generate_voxels(shape=[3, 3, 3], porosity=0.3)
+
+stl_file = 'stl_file.stl'
+porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_file)
+
+# show_generated_voxels(porous_obj)
+# show_stl_mesh(porous_mesh)
+show_stl_mesh(mesh.Mesh.from_file(stl_file))
