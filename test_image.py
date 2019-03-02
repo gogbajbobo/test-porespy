@@ -70,4 +70,4 @@ porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_fi
 prepare_stl_mesh_figure(porous_mesh)
 # # got ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
-show_stl_mesh_from_stl_file(stl_file)
+# show_stl_mesh_from_stl_file(stl_file)
