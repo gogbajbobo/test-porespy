@@ -42,7 +42,7 @@ def show_stl_mesh(voxels_mesh):
 
     axes.add_collection3d(mplot3d.art3d.Poly3DCollection(voxels_mesh.vectors))
 
-    scale = voxels_mesh.points.flatten(-1)
+    scale = voxels_mesh.points.flatten('F')
     axes.auto_scale_xyz(scale, scale, scale)
 
     plt.show()
