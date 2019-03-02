@@ -32,15 +32,11 @@ def generate_voxels_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
     return mesh_region
 
 
-
-
-def show_generated_voxels(voxels):
+def prepare_voxels_figure(voxels):
 
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     ax.voxels(voxels, edgecolor='k')
-
-    plt.show()
 
 
 def show_stl_mesh(voxels_mesh):
@@ -59,9 +55,9 @@ def show_stl_mesh(voxels_mesh):
 def show_stl_mesh_from_stl_file(mesh_file):
     show_stl_mesh(mesh.Mesh.from_file(mesh_file))
 
+# prepare_voxels_figure(porous_obj)
 
 porous_obj = generate_voxels(shape=[3, 3, 3], porosity=0.3)
-# show_generated_voxels(porous_obj)
 
 stl_file = 'stl_file.stl'
 porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_file)
