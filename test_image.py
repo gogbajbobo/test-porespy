@@ -65,8 +65,8 @@ porous_obj = generate_voxels(shape, porosity)
 inverse_porous_obj = ~ porous_obj
 prepare_voxels_figure(inverse_porous_obj)
 
-stl_file = 'stl_file.stl'
-porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_file)
+# stl_file = 'stl_file.stl'
+porous_mesh = generate_voxels_mesh(inverse_porous_obj)
 
 prepare_stl_mesh_figure(porous_mesh)
 # # got ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
