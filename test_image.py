@@ -51,9 +51,10 @@ def prepare_stl_mesh_figure(voxels_mesh):
     axes.auto_scale_xyz(scale, scale, scale)
 
 
+def prepare_stl_mesh_from_stl_file(mesh_file):
+    prepare_stl_mesh_figure(mesh.Mesh.from_file(mesh_file))
 
-def show_stl_mesh_from_stl_file(mesh_file):
-    show_stl_mesh(mesh.Mesh.from_file(mesh_file))
+
 size = 30
 shape = [size, size, size]
 porosity = 0.3
