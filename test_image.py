@@ -53,10 +53,10 @@ def show_stl_mesh_from_stl_file(mesh_file):
 
 
 porous_obj = generate_voxels(shape=[3, 3, 3], porosity=0.3)
+# show_generated_voxels(porous_obj)
 
 stl_file = 'stl_file.stl'
 porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_file)
 
-# show_generated_voxels(porous_obj)
 # show_stl_mesh(porous_mesh)
 show_stl_mesh(mesh.Mesh.from_file(stl_file))
