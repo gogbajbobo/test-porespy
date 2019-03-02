@@ -7,7 +7,7 @@ from mpl_toolkits import mplot3d
 
 def generate_voxels(shape, porosity, save_to_vtk=False, filename='voxels'):
 
-    voxels = ps.generators.blobs(shape, porosity, blobiness=2)
+    voxels = ps.generators.blobs(shape, porosity)
 
     if save_to_vtk:
         ps.io.to_vtk(voxels, path=filename, vox=False)
