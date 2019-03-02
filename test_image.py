@@ -48,6 +48,10 @@ def show_stl_mesh(voxels_mesh):
     plt.show()
 
 
+def show_stl_mesh_from_stl_file(mesh_file):
+    show_stl_mesh(mesh.Mesh.from_file(mesh_file))
+
+
 porous_obj = generate_voxels(shape=[3, 3, 3], porosity=0.3)
 
 stl_file = 'stl_file.stl'
