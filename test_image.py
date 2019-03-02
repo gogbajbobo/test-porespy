@@ -59,4 +59,6 @@ stl_file = 'stl_file.stl'
 porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_file)
 
 # show_stl_mesh(porous_mesh)
-show_stl_mesh(mesh.Mesh.from_file(stl_file))
+# # got ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+
+show_stl_mesh_from_stl_file(stl_file)
