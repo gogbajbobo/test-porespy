@@ -12,6 +12,8 @@ def generate_voxels(shape, porosity, save_to_vtk=False, filename='voxels'):
     if save_to_vtk:
         ps.io.to_vtk(voxels, path=filename, vox=False)
 
+    # print(voxels)
+
     return voxels
 
 
@@ -22,6 +24,8 @@ def generate_voxels_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
 
     if save_to_stl:
         voxels_mesh.save(filename)
+
+    # print(voxels_mesh)
 
     return voxels_mesh
 
