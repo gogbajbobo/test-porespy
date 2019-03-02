@@ -39,17 +39,17 @@ def prepare_voxels_figure(voxels):
     ax.voxels(voxels, edgecolor='k')
 
 
-def show_stl_mesh(voxels_mesh):
+def prepare_stl_mesh_figure(voxels_mesh):
 
     fig = plt.figure()
     axes = mplot3d.Axes3D(fig)
+    mesh_fig = mplot3d.art3d.Poly3DCollection(voxels_mesh.verts[voxels_mesh.faces])
+    mesh_fig.set_edgecolor('k')
+    axes.add_collection3d(mesh_fig)
 
-    axes.add_collection3d(mplot3d.art3d.Poly3DCollection(voxels_mesh.vectors))
-
-    scale = voxels_mesh.points.flatten('F')
+    scale = voxels_mesh.verts.flatten('F')
     axes.auto_scale_xyz(scale, scale, scale)
 
-    plt.show()
 
 
 def show_stl_mesh_from_stl_file(mesh_file):
@@ -67,7 +67,7 @@ prepare_voxels_figure(inverse_porous_obj)
 stl_file = 'stl_file.stl'
 porous_mesh = generate_voxels_mesh(porous_obj, save_to_stl=True, filename=stl_file)
 
-# show_stl_mesh(porous_mesh)
+prepare_stl_mesh_figure(porous_mesh)
 # # got ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
 show_stl_mesh_from_stl_file(stl_file)
