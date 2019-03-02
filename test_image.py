@@ -19,15 +19,19 @@ def generate_voxels(shape, porosity, save_to_vtk=False, filename='voxels'):
 
 def generate_voxels_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
 
-    voxels_np = np.array(voxels, dtype=mesh.Mesh.dtype)
-    voxels_mesh = mesh.Mesh(voxels_np, remove_empty_areas=False)
+    mesh_region = ps.tools.mesh_region(voxels)
+    # voxels_mesh = mesh.Mesh(mesh_region, remove_empty_areas=False)
+    #
+    # if save_to_stl:
+    #     voxels_mesh.save(filename)
+    #
+    # # print(voxels_mesh.vectors)
+    #
+    # return voxels_mesh
 
-    if save_to_stl:
-        voxels_mesh.save(filename)
+    return mesh_region
 
-    # print(voxels_mesh)
 
-    return voxels_mesh
 
 
 def show_generated_voxels(voxels):
