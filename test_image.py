@@ -51,10 +51,6 @@ def prepare_stl_mesh_figure(voxels_mesh):
     axes.auto_scale_xyz(scale, scale, scale)
 
 
-def prepare_stl_mesh_from_stl_file(mesh_file):
-    prepare_stl_mesh_figure(mesh.Mesh.from_file(mesh_file))
-
-
 size = 30
 shape = [size, size, size]
 porosity = 0.3
@@ -71,6 +67,5 @@ porous_mesh = generate_voxels_mesh(inverse_porous_obj)
 prepare_stl_mesh_figure(porous_mesh)
 # # got ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
-# show_stl_mesh_from_stl_file(stl_file)
 
 plt.show()
