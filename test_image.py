@@ -50,10 +50,10 @@ def prepare_mesh_figure(voxels_mesh):
 
 
 size = 30
-shape = [size, size, size]
-porosity = 0.3
+obj_shape = [size, size, size]
+obj_porosity = 0.3
 
-porous_obj = generate_voxels(shape, porosity)
+porous_obj = generate_voxels(obj_shape, obj_porosity)
 
 # # Porespy generates an array with True values denoting the pore space
 # # If we want True values denote the material we should inverse the array
