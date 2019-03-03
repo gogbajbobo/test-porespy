@@ -57,7 +57,6 @@ prepare_voxels_figure(inverse_porous_obj)
 porous_mesh = generate_voxels_mesh(inverse_porous_obj)
 
 prepare_stl_mesh_figure(porous_mesh)
-# # got ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
 
 plt.show()
