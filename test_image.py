@@ -21,6 +21,12 @@ def generate_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
 
     mesh_region = ps.tools.mesh_region(voxels)
 
+    if save_to_stl:
+        mesh_reg = list(map(lambda x: (0, x.tolist(), 0), mesh_region.verts[mesh_region.faces]))
+        voxels_mesh = np.array(mesh_reg, dtype=mesh.Mesh.dtype)
+        voxels_mesh = mesh.Mesh(voxels_mesh, remove_empty_areas=True)
+        voxels_mesh.save(filename)
+
     return mesh_region
 
 
