@@ -31,7 +31,7 @@ def prepare_voxels_figure(voxels):
     ax.voxels(voxels, edgecolor='k')
 
 
-def prepare_stl_mesh_figure(voxels_mesh):
+def prepare_mesh_figure(voxels_mesh):
 
     fig = plt.figure()
     axes = mplot3d.Axes3D(fig)
@@ -56,7 +56,7 @@ prepare_voxels_figure(inverse_porous_obj)
 # stl_file = 'stl_file.stl'
 porous_mesh = generate_voxels_mesh(inverse_porous_obj)
 
-prepare_stl_mesh_figure(porous_mesh)
 
+prepare_mesh_figure(porous_mesh)
 
 plt.show()
