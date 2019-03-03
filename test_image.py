@@ -54,11 +54,10 @@ shape = [size, size, size]
 porosity = 0.3
 
 porous_obj = generate_voxels(shape, porosity)
-# prepare_voxels_figure(porous_obj)
 
-inverse_porous_obj = ~ porous_obj
-prepare_voxels_figure(inverse_porous_obj)
+porous_obj = ~ porous_obj
 
+prepare_voxels_figure(porous_obj)
 
 # stl_file = 'stl_file.stl'
 porous_mesh = generate_mesh(porous_obj, save_to_stl=True)
