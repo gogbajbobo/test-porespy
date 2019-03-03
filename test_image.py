@@ -17,7 +17,7 @@ def generate_voxels(shape, porosity, save_to_vtk=False, filename='voxels'):
     return voxels
 
 
-def generate_voxels_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
+def generate_mesh(voxels, save_to_stl=False, filename='stl_file.stl'):
 
     mesh_region = ps.tools.mesh_region(voxels)
 
@@ -53,9 +53,9 @@ porous_obj = generate_voxels(shape, porosity)
 inverse_porous_obj = ~ porous_obj
 prepare_voxels_figure(inverse_porous_obj)
 
-# stl_file = 'stl_file.stl'
-porous_mesh = generate_voxels_mesh(inverse_porous_obj)
 
+# stl_file = 'stl_file.stl'
+porous_mesh = generate_mesh(porous_obj, save_to_stl=True)
 
 prepare_mesh_figure(porous_mesh)
 
